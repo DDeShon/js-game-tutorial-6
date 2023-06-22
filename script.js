@@ -24,10 +24,14 @@ class Enemy {
     this.flapSpeed = Math.floor(Math.random() * 3 + 1);
   }
   update() {
-    if (gameFrame % 30 === 0) {
+    if (gameFrame % 75 === 0) {
       this.newX = Math.random() * (canvas.width - this.width);
       this.newY = Math.random() * (canvas.height - this.height);
     }
+    let distX = this.x - this.newX;
+    let distY = this.y - this.newY;
+    this.x -= distX / 20;
+    this.y -= distY / 20;
     if (this.x + this.width < 0) this.x = canvas.width;
     // animate sprites
     if (gameFrame % this.flapSpeed === 0) {
