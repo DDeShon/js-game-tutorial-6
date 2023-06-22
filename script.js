@@ -18,12 +18,16 @@ class Enemy {
     this.height = this.spriteHeight / 3;
     this.x = Math.random() * (canvas.width - this.width);
     this.y = Math.random() * (canvas.height - this.height);
+    this.newX = Math.random() * (canvas.width - this.width);
+    this.newY = Math.random() * (canvas.height - this.height);
     this.frame = 0;
     this.flapSpeed = Math.floor(Math.random() * 3 + 1);
   }
   update() {
-    // this.x = 0;
-    // this.y = 0;
+    if (gameFrame % 30 === 0) {
+      this.newX = Math.random() * (canvas.width - this.width);
+      this.newY = Math.random() * (canvas.height - this.height);
+    }
     if (this.x + this.width < 0) this.x = canvas.width;
     // animate sprites
     if (gameFrame % this.flapSpeed === 0) {
